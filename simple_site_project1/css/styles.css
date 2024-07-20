@@ -442,6 +442,10 @@ footer {
   .part-six-item h2 {
     font-size: 20px;
   }
+
+  footer {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 600px) {
