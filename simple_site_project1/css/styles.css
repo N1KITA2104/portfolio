@@ -377,10 +377,83 @@ input[type="text"] {
   text-align: center;
 }
 
+.part-six-item p {
+  overflow-y: scroll;
+  height: 60px;
+  text-align: justify;
+}
+
+.part-six-item p::-webkit-scrollbar {
+  width: 0;
+}
+
 /* Part 6 End */
+
+/* Part 7 Start */
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2%;
+  margin: 5%;
+}
+
+.card {
+  background-color: var(--color-green);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  margin-bottom: 5%;
+}
+
+.card-description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  margin: 5%;
+}
+
+.card-description h3 {
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 2vw;
+}
+
+footer {
+  display: flex;
+  background-color: var(--color-green);
+  justify-content: space-between;
+  padding: 2% 10%;
+}
+
+/* Part 7 END */
 
 /* Media queries */
 @media screen and (max-width: 1200px) {
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .card-description h3 {
+    font-size: 3vw;
+  }
+
+  .card {
+    margin: 2%;
+  }
+
   .three-in-row {
     grid-template-columns: 1fr;
   }
