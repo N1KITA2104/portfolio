@@ -1,0 +1,279 @@
+:root {
+  --color-white: white;
+  --color-black: black;
+  --color-green: #8bd876;
+  --background: url(../img/background.jpg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  font-family: Overpass, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: var(--color-green);
+  color: var(--color-black);
+}
+
+.container {
+  min-height: 100vh;
+  padding: 3% 7%;
+}
+
+.container-green {
+  min-height: 100vh;
+  padding: 3% 7%;
+  background-color: var(--color-green);
+}
+
+.background {
+  background: var(--background) no-repeat center center / cover;
+  background-attachment: fixed;
+}
+
+.white {
+  color: var(--color-white);
+}
+
+.green {
+  color: var(--color-green);
+}
+
+hr {
+  border: 1px solid var(--color-black);
+}
+
+.container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Part 1 Start*/
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 5%;
+  z-index: 999;
+}
+
+nav button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  position: fixed;
+  left: 5%;
+}
+
+nav input[type="text"] {
+  position: fixed;
+  right: 5%;
+}
+
+::placeholder {
+  color: var(--color-white);
+  opacity: 0.75;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-green);
+}
+
+input[type="text"] {
+  color: var(--color-white);
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 1px solid var(--color-white);
+  height: 24px;
+}
+
+.three-in-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  margin-top: 120px;
+}
+
+.two-in-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 25px;
+}
+
+.item1 {
+  margin: 5%;
+  margin-bottom: auto;
+}
+
+.item1 h1 {
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 5vw;
+}
+
+.item1 p {
+  height: 100px;
+  text-align: justify;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.item1 p:hover {
+  overflow-y: scroll;
+}
+
+.item1 p::-webkit-scrollbar {
+  width: 0;
+}
+
+.btn-first {
+  background-color: var(--color-green);
+  color: var(--color-black);
+  font-size: 18px;
+  padding: 5px 15px;
+  border-radius: 50px;
+  border: 2px solid var(--color-green);
+  margin: 10px 10px 10px 0;
+}
+
+.btn-first:hover {
+  color: var(--color-green);
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+
+.item2 img {
+  z-index: 2;
+  filter: contrast(0.7);
+}
+
+.item3 {
+  width: 60%;
+  margin: 5%;
+  margin-top: auto;
+}
+
+.content {
+  margin: 15% 15% 15% 0;
+}
+
+.rounded-pill {
+  width: 100%;
+  border-radius: 50px;
+  padding: 12px 20px;
+  background-color: rgb(0, 0, 0, 0);
+  border: 2px solid var(--color-green);
+}
+
+/* Part 1 END*/
+
+/* Part 2 Start */
+
+.two-in-row-second {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 25px;
+}
+
+/* Part 2 END */
+
+/* Part 3 Start */
+
+.centered-block {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.two-in-row-third {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  margin: 40px;
+}
+
+.two-in-row-third img {
+  width: 100%;
+}
+
+.part-three-header {
+  width: 40%;
+}
+
+.part-three-header h1 {
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 5vw;
+}
+
+.part-three-header p {
+  overflow-y: scroll;
+  height: 60px;
+}
+.part-three-header p::-webkit-scrollbar {
+  width: 0;
+}
+
+.description-two-in-row {
+  display: flex;
+  justify-content: space-between;
+  line-height: 0.8;
+}
+
+.description-two-in-row p {
+  font-size: 14px;
+}
+
+/* Part 3 END */
+
+/* Media queries */
+@media screen and (max-width: 1200px) {
+  .three-in-row {
+    grid-template-columns: 1fr;
+  }
+  .two-in-row-second {
+    grid-template-columns: 1fr;
+  }
+
+  .two-in-row-third {
+    grid-template-columns: 1fr;
+  }
+
+  .part-three-header {
+    margin: 5%;
+    width: 100%;
+  }
+
+  .item3 {
+    width: auto !important;
+  }
+}
