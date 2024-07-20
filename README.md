@@ -4,6 +4,6 @@ Welcome to my portfolio repository! This collection showcases a variety of proje
 
 ## Contents
 
-- **Project 1:** [HTML & CSS Project Name]
+- **Project 1:** [HTML & CSS Concert Tour]
   - *Description:* This project is a fully responsive website built using pure HTML and CSS. It features a modern design, interactive elements, and a clean, user-friendly layout.
   - *Technologies:* HTML, CSS.
