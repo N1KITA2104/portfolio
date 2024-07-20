@@ -123,7 +123,10 @@ input[type="text"] {
   margin-bottom: auto;
 }
 
-.item1 h1 {
+.item1 h1,
+.part-three-header h1,
+.two-in-row-fourth h1,
+.part-six-item h1 {
   font-weight: 400;
   text-align: center;
   width: 100%;
@@ -145,7 +148,11 @@ input[type="text"] {
   overflow-y: scroll;
 }
 
-.item1 p::-webkit-scrollbar {
+.item1 p::-webkit-scrollbar,
+.part-six-item p::-webkit-scrollbar,
+.part-three-header p::-webkit-scrollbar,
+.part-five-item1 p::-webkit-scrollbar,
+.part-five-item2 p::-webkit-scrollbar {
   width: 0;
 }
 
@@ -226,23 +233,9 @@ input[type="text"] {
   width: 40%;
 }
 
-.part-three-header h1 {
-  font-weight: 400;
-  text-align: center;
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 5vw;
-}
-
 .part-three-header p {
   overflow-y: scroll;
   height: 60px;
-}
-.part-three-header p::-webkit-scrollbar {
-  width: 0;
 }
 
 .description-two-in-row {
@@ -294,17 +287,6 @@ input[type="text"] {
   width: 100%;
 }
 
-.two-in-row-fourth h1 {
-  font-weight: 400;
-  text-align: center;
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 5vw;
-}
-
 /* Part 4 END */
 /* Part 5 Start */
 
@@ -325,11 +307,6 @@ input[type="text"] {
 .part-five-item2 p {
   overflow-y: scroll;
   height: 60px;
-}
-
-.part-five-item1 p::-webkit-scrollbar,
-.part-five-item2 p::-webkit-scrollbar {
-  width: 0;
 }
 
 .part-five-item1 h1 {
@@ -355,17 +332,6 @@ input[type="text"] {
   margin: 5%;
 }
 
-.part-six-item h1 {
-  font-weight: 400;
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 5vw;
-  text-align: center;
-}
-
 .part-six-item h2 {
   font-weight: 400;
   width: 100%;
@@ -381,10 +347,6 @@ input[type="text"] {
   overflow-y: scroll;
   height: 60px;
   text-align: justify;
-}
-
-.part-six-item p::-webkit-scrollbar {
-  width: 0;
 }
 
 /* Part 6 End */
@@ -441,9 +403,28 @@ footer {
 
 /* Media queries */
 @media screen and (max-width: 1200px) {
+  .three-in-row,
+  .two-in-row-second,
+  .two-in-row-third,
   .card-container {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .part-five-item1 h1,
+  .part-six-item h1,
+  .part-three-header h1,
+  .item1 h1 {
+    font-size: 50px;
+  }
+
+  .part-three-header {
+    margin: 2%;
+    width: 100%;
+  }
+
+  .item3 {
+    width: auto !important;
   }
 
   .card-description h3 {
@@ -454,50 +435,12 @@ footer {
     margin: 2%;
   }
 
-  .three-in-row {
-    grid-template-columns: 1fr;
-  }
-
-  .two-in-row-second {
-    grid-template-columns: 1fr;
-  }
-
-  .two-in-row-third {
-    gap: 0;
-    grid-template-columns: 1fr;
-  }
-
-  .part-three-header {
-    margin: 2%;
-    width: 100%;
-  }
-
-  .part-three-header h1 {
-    font-size: 50px;
-  }
-
-  .item1 h1 {
-    font-size: 50px;
-  }
-
-  .item3 {
-    width: auto !important;
-  }
-
-  .part-five-item1 h1 {
-    font-size: 50px;
-  }
-
   .three-in-row-second {
     grid-template-columns: 1fr 1fr;
   }
 
   .part-six-item h2 {
     font-size: 20px;
-  }
-
-  .part-six-item h1 {
-    font-size: 50px;
   }
 }
 
