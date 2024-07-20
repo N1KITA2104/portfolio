@@ -1,7 +1,7 @@
 :root {
   --color-white: white;
   --color-black: black;
-  --color-green: #8bd876;
+  --color-green: #54ce64;
   --background: url(../img/background.jpg);
 }
 
@@ -46,6 +46,12 @@ body {
 
 .green {
   color: var(--color-green);
+}
+
+img {
+  max-width: 100%;
+  filter: contrast(0.7);
+  margin: 2%;
 }
 
 hr {
@@ -165,11 +171,6 @@ input[type="text"] {
   margin: 5%;
 }
 
-.item2 img {
-  z-index: 2;
-  filter: contrast(0.7);
-}
-
 .item3 {
   width: 60%;
   margin: 5%;
@@ -213,7 +214,7 @@ input[type="text"] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8%;
-  margin: 40px;
+  margin: 2%;
 }
 
 .two-in-row-third img {
@@ -265,12 +266,21 @@ input[type="text"] {
   }
 
   .two-in-row-third {
+    gap: 2%;
     grid-template-columns: 1fr;
   }
 
   .part-three-header {
-    margin: 5%;
+    margin: 2%;
     width: 100%;
+  }
+
+  .part-three-header h1 {
+    font-size: 50px;
+  }
+
+  .item1 h1 {
+    font-size: 50px;
   }
 
   .item3 {
