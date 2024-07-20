@@ -164,6 +164,7 @@ input[type="text"] {
   border-radius: 50px;
   border: 2px solid var(--color-green);
   margin: 10px 10px 10px 0;
+  transition: all 0.25s linear;
 }
 
 .btn-first:hover {
@@ -227,6 +228,10 @@ input[type="text"] {
 
 .two-in-row-third img {
   width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.two-in-row-third img:hover {
+  transform: scale(1.05);
 }
 
 .part-three-header {
@@ -268,6 +273,7 @@ input[type="text"] {
   border-radius: 50px;
   border: 2px solid var(--color-black);
   margin: 10px 10px 10px 0;
+  transition: all 0.25s linear;
 }
 
 .btn-second:hover {
