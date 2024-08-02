@@ -11,3 +11,8 @@
 .nav-link.active {
   color: #ff5454;
 }
+
+.navbar-nav .nav-item:last-child {
+  display: flex;
+  align-items: center;
+}

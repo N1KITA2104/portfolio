@@ -15,7 +15,7 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
     AppComponent,
     NavigationComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
