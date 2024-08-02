@@ -1,0 +1,13 @@
+.nav-link {
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 10px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #ff9696;
+}
+
+.nav-link.active {
+  color: #ff5454;
+}
