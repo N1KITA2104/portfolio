@@ -1,18 +1,41 @@
 .nav-link {
-  transition: color 0.2s ease, background-color 0.2s ease;
-  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 4px;
+  margin: 0 4px 0 4px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px; 
+    background-color: white; 
+    transition: width 0.3s linear;
+  }
+
+  &:hover::before, &:active::before {
+    width: 100%;
+  }
+
+  &.active {
+    font-weight: bold;
+    color: #ff5454;
+  }
+
+  &:hover, &:active {
+    color: #e97c7c;
+  }
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: #ff9696;
-}
+.navbar-brand {
+  width: 40px;
+  height: auto;
+  transition: all .5s ease-in-out;
 
-.nav-link.active {
-  color: #ff5454;
-}
-
-.navbar-nav .nav-item:last-child {
-  display: flex;
-  align-items: center;
+  &:hover {
+    transform: rotate(360deg);
+  }
 }
