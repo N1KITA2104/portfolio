@@ -1,1 +1,29 @@
-<p>calculator works!</p>
+<section class="container">
+    <h1>Calculator</h1>
+    <div class="calculator bg-dark">
+      <div class="calculator-screen">
+        <input type="text" readonly class="calculator-display" [value]="displayValue" />
+      </div>
+      <div class="calculator-buttons">
+        <button class="btn btn-dark" (click)="clear()">C</button>
+        <button class="btn btn-dark" (click)="toggleSign()">±</button>
+        <button class="btn btn-dark" (click)="append('%')">%</button>
+        <button class="btn btn-accent" (click)="append('/')">/</button>
+        <button class="btn btn-dark" (click)="append('7')">7</button>
+        <button class="btn btn-dark" (click)="append('8')">8</button>
+        <button class="btn btn-dark" (click)="append('9')">9</button>
+        <button class="btn btn-accent" (click)="append('*')">*</button>
+        <button class="btn btn-dark" (click)="append('4')">4</button>
+        <button class="btn btn-dark" (click)="append('5')">5</button>
+        <button class="btn btn-dark" (click)="append('6')">6</button>
+        <button class="btn btn-accent" (click)="append('-')">-</button>
+        <button class="btn btn-dark" (click)="append('1')">1</button>
+        <button class="btn btn-dark" (click)="append('2')">2</button>
+        <button class="btn btn-dark" (click)="append('3')">3</button>
+        <button class="btn btn-accent" (click)="append('+')">+</button>
+        <button class="btn btn-dark btn-zero" (click)="append('0')">0</button>
+        <button class="btn btn-dark" (click)="append('.')">.</button>
+        <button class="btn btn-accent" (click)="calculate()">=</button>
+      </div>
+    </div>
+  </section>
