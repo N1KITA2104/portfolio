@@ -6,5 +6,5 @@ import { Component} from '@angular/core';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
-  logoPath: string = "img/brand-logo.png";
+  logoPath: string = "favicon.ico";
 }
