@@ -1,1 +1,73 @@
-<p>converter works!</p>
+<section class="container">
+    <div class="d-flex justify-content-center m-3">
+      <h1 class="display-3">Converter</h1>
+    </div>
+    <div class="converter bg-dark p-3 rounded">
+      <!-- Conversion Type Dropdown -->
+      <div class="form-group mb-3">
+        <label for="convertType" class="form-label text-white">Convert Type</label>
+        <select
+          id="convertType"
+          class="form-select"
+          [(ngModel)]="convertType"
+          (ngModelChange)="onConvert(); updateDefaultValues()"
+        >
+          <option [ngValue]="ConvertType.Length">Length</option>
+          <option [ngValue]="ConvertType.Weight">Weight</option>
+          <option [ngValue]="ConvertType.Temperature">Temperature</option>
+        </select>
+      </div>
+  
+      <!-- Input Value Field -->
+      <div class="form-group mb-3">
+        <label for="inputValue" class="form-label text-white">Input Value</label>
+        <input
+          type="number"
+          id="inputValue"
+          class="form-control"
+          [(ngModel)]="inputValue"
+          (ngModelChange)="onConvert()"
+          placeholder="Enter value"
+        />
+      </div>
+  
+      <!-- From Unit Dropdown -->
+      <div class="form-group mb-3">
+        <label for="fromUnit" class="form-label text-white">From</label>
+        <select
+          id="fromUnit"
+          class="form-select"
+          [(ngModel)]="fromUnit"
+          (ngModelChange)="onConvert()"
+        >
+          <option *ngFor="let unit of getUnits()" [value]="unit">{{ unit }}</option>
+        </select>
+      </div>
+  
+      <!-- To Unit Dropdown -->
+      <div class="form-group mb-3">
+        <label for="toUnit" class="form-label text-white">To</label>
+        <select
+          id="toUnit"
+          class="form-select"
+          [(ngModel)]="toUnit"
+          (ngModelChange)="onConvert()"
+        >
+          <option *ngFor="let unit of getUnits()" [value]="unit">{{ unit }}</option>
+        </select>
+      </div>
+  
+      <!-- Output Value Field -->
+      <div class="form-group mb-3">
+        <label for="outputValue" class="form-label text-white">Output Value</label>
+        <input
+          type="text"
+          id="outputValue"
+          class="form-control"
+          [value]="outputValue"
+          readonly
+        />
+      </div>
+    </div>
+  </section>
+  

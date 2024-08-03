@@ -9,6 +9,7 @@ import { CalculatorModule } from './calculator/calculator.module';
 import { AboutModule } from './about/about.module';
 import { ConverterModule } from './converter/converter.module';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { CookieConsentComponent } from './layout/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
     NavigationComponent,
     FooterComponent,
     NotFoundComponent,
+    CookieConsentComponent
   ],
   imports: [
     BrowserModule,

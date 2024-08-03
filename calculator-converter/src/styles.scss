@@ -19,7 +19,6 @@ a:link, a:visited {
 
 a:hover, a:active {
   color: rgb(255, 106, 106);
-  text-decoration: underline;
 }
 
 .bg-dark {
@@ -27,6 +26,10 @@ a:hover, a:active {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.4px);
   -webkit-backdrop-filter: blur(4.4px);
+}
+
+::selection {
+  background-color: #ff6f7eaf;
 }
 
 /* For WebKit browsers (Chrome, Safari) */

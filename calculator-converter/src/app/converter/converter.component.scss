@@ -1,0 +1,51 @@
+.converter {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(33, 37, 41, 0.8);
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Tablet-specific styles
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .converter {
+    max-width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  background: rgba(33, 37, 41, 1) !important;
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  color: white;
+  padding: 0.75rem;
+  border: none; // Remove the border
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none; // Remove border on focus
+  outline: none;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
