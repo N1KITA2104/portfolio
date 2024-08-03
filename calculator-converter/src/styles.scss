@@ -11,9 +11,49 @@ body {
   color: white;
 }
 
+a:link, a:visited {
+  color: white;
+  text-decoration: none;
+  transition: color .2s linear;
+}
+
+a:hover, a:active {
+  color: rgb(255, 106, 106);
+  text-decoration: underline;
+}
+
 .bg-dark {
   background: rgba(33, 37, 41, 0.8) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.4px);
   -webkit-backdrop-filter: blur(4.4px);
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(33, 37, 41, 0.8); /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DD1F44; /* Scrollbar handle color */
+  border-radius: 4px; /* Rounded corners for the handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF8090; /* Hover color for the handle */
+}
+
+/* For Firefox */
+.scrollable {
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+  scrollbar-color: #DD1F44 rgba(33, 37, 41, 0.8); /* Handle and track color */
+}
+
+/* For IE and Edge (Legacy) */
+.scrollable {
+  -ms-overflow-style: scrollbar;
 }
