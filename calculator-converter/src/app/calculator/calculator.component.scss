@@ -15,7 +15,7 @@
 }
 
 .calculator-display {
-  background: rgba(0, 0, 0, 0.0);
+  background: rgba(0, 0, 0, 0);
   color: #fff;
   border: none;
   width: 100%;
@@ -50,4 +50,13 @@
 
 .btn-zero {
   grid-column: span 2;
+}
+
+.btn-dot {
+  grid-row: span 2;
+}
+
+.btn-part-clear img {
+  width: 40px;
+  height: auto;
 }
