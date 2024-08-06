@@ -1,0 +1,43 @@
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 4px;
+  margin: 0 4px 0 4px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s linear;
+  }
+
+  &:hover::before,
+  &:active::before {
+    width: 100%;
+  }
+
+  &.active {
+    font-weight: bold;
+    color: #ff5454;
+  }
+
+  &:hover,
+  &:active {
+    color: #e97c7c;
+  }
+}
+
+.navbar-brand {
+  width: 40px;
+  height: auto;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
