@@ -1,0 +1,16 @@
+<div class="task-item" [ngClass]="{'completed': task.completed}">
+  <input
+    [id]="task.id"
+    type="checkbox"
+    [checked]="task.completed"
+    (change)="toggleComplete()"
+    class="task-checkbox"
+  />
+  <div class="task-details">
+    <span class="task-title">{{ task.title }}</span>
+    <p class="task-description">{{ task.description }}</p>
+  </div>
+  <button (click)="onDelete()" class="delete-button">
+    <i class="fas fa-trash"></i>
+  </button>
+</div>

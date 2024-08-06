@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>TASK LIST</h1>
+
+  <!-- Форма для добавления новой задачи -->
+  <form (ngSubmit)="addTask()" #taskForm="ngForm">
+    <div>
+      <label for="title">Task name:</label>
+      <input id="title" name="title" [(ngModel)]="newTaskTitle" required />
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input
+        id="description"
+        name="description"
+        [(ngModel)]="newTaskDescription"
+      />
+    </div>
+    <div>
+      <label for="expiryDate">Expiry Date:</label>
+      <input
+        type="datetime-local"
+        id="expiryDate"
+        name="expiryDate"
+        [(ngModel)]="newTaskExpiryDate"
+      />
+    </div>
+    <button type="submit">Add task</button>
+  </form>
+
+  <!-- Прогресс-бар завершенности -->
+  <div class="progress-bar-container-wrapper">
+    <app-progress-bar
+      [completed]="countCompletedTasks()"
+      [total]="tasks.length"
+    ></app-progress-bar>
+  </div>
+
+  <!-- Список задач -->
+  <div>
+    <app-task-item
+      *ngFor="let task of tasks"
+      [task]="task"
+      (delete)="deleteTask($event)"
+    ></app-task-item>
+  </div>
+</div>

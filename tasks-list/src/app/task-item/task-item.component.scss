@@ -1,0 +1,102 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: 2px solid #0c0c0c;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #ff9e9e;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background-color: #e9e9e9;
+  }
+
+  &.completed {
+    background-color: #d4edda;
+    color: #6c757d; 
+  }
+
+  .task-checkbox {
+    margin-right: 20px;
+  }
+
+  .task-details {
+    flex: 1;
+    overflow: hidden;
+    padding-right: 15px;
+
+    .task-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden; 
+      text-overflow: ellipsis;
+    }
+
+    .task-description {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #666;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #4e4e4e;
+    background-color: #fff;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+  
+    &:checked {
+      background-color: rgb(105, 255, 143);
+      border-color: #08360c;
+  
+      &::after {
+        content: '✔';
+        color: #000000;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.25);
+    }
+  }
+  
+
+  button {
+    background-color: #ccc;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #000000;
+      color: rgb(255, 255, 255);
+      border-color: rgb(255, 105, 105);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
