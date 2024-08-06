@@ -3,5 +3,5 @@ export interface Task {
   title: string;
   description: string;
   completed: boolean;
-  expiryDate?: Date;
+  expiryDate: Date | undefined;
 }
