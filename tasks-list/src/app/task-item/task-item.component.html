@@ -9,6 +9,11 @@
   <div class="task-details">
     <span class="task-title">{{ task.title }}</span>
     <p class="task-description">{{ task.description }}</p>
+    @if (task.expiryDate) {
+      <span class="task-expiry-date">
+        Expires: {{ task.expiryDate | date: 'short' }}
+      </span>
+    }
   </div>
   <button (click)="onDelete()" class="delete-button">
     <i class="fas fa-trash"></i>
