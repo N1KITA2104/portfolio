@@ -53,7 +53,11 @@ export class TaskListComponent implements OnInit {
     if (typeof window !== 'undefined' && window.localStorage) {
       const tasksFromStorage = localStorage.getItem('tasks');
       if (tasksFromStorage) {
-        this.tasks = JSON.parse(tasksFromStorage);
+        try {
+          this.tasks = JSON.parse(tasksFromStorage);
+        } catch (error) {
+          console.error('Error parsing tasks from localStorage:', error);
+        }
       }
     }
   }
