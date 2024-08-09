@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './layout/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -11,4 +12,8 @@ export const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full',
   },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  }
 ];

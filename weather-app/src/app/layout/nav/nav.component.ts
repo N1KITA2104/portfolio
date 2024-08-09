@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { WeatherInfoService } from '../../services/weather-info.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule],
   providers: [WeatherInfoService],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
