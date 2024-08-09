@@ -1,0 +1,53 @@
+$green_color: var(--green-color);
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  color: $green_color;
+}
+
+.navbar-brand img {
+  margin: 0 10px;
+}
+
+.form-control {
+  border-radius: 0;
+  border-bottom-left-radius: 6px;
+  border-color: $green_color;
+}
+
+
+.btn {
+  border-radius: 0;
+  border-left: 0;
+  border-bottom-right-radius: 6px;
+  color: $green_color;
+  border-color: $green_color;
+}
+
+.btn:hover {
+  background-color: $green_color;
+  color: white;
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.navbar-toggler {
+  font-size: 18px;
+  border-radius: 0;
+  padding: 4px;
+  border-color: $green_color;
+  border-top-right-radius: 6px;
+}
+
+.navbar-toggler:hover {
+  background-color: $green_color;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
