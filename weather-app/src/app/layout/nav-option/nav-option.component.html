@@ -3,13 +3,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Today</a>
+          <a class="nav-link" routerLink="/weather" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Today</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/daily">Daily</a>
+          <a class="nav-link" routerLink="/daily" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Daily</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/hourly">Hourly</a>
+          <a class="nav-link" routerLink="/hourly" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Hourly</a>
         </li>
       </ul>
     </div>
