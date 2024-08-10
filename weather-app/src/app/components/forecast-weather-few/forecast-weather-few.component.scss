@@ -1,0 +1,29 @@
+.glassmorphic-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.card-footer {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.list-unstyled {
+  padding: 0;
+}
+
+.list-unstyled li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+img {
+  max-width: 50px;
+}

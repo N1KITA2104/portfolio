@@ -1,0 +1,33 @@
+<div class="container mt-3 mb-3">
+    <div class="glassmorphic-card card">
+      <div
+        class="card-header bg-dark text-white p-3"
+      >
+        <h5 class="card-title">10-Day Weather Forecast</h5>
+      </div>
+      <div class="card-body text-white">
+        <ng-container *ngIf="weather$ | async as weatherData; else loading">
+          <ul class="list-unstyled m-3">
+            <li *ngFor="let day of weatherData.forecast.forecastday" class="mb-3 d-flex align-items-center">
+              <div class="me-3">
+                <p class="m-0">{{ day.date | date : 'EEE' }}</p>
+                <img [src]="day.day.condition.icon" alt="Weather icon" />
+              </div>
+              <div>
+                <p class="m-0">
+                  {{ day.day.maxtemp_c }}° / {{ day.day.mintemp_c }}°
+                </p>
+                <p class="m-0">
+                  <small>{{ day.day.daily_chance_of_rain }}% Rain</small>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-template #loading>
+          <p>Loading weather data...</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  
