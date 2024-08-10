@@ -5,15 +5,10 @@
 }
 
 .card-header {
-  background: rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
-.card-footer {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-}
 
 .list-unstyled {
   padding: 0;
@@ -21,7 +16,12 @@
 
 .list-unstyled li {
   border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  padding: 16px;
+  transition: all .2s ease-in-out;
+}
+
+.list-unstyled li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 img {
