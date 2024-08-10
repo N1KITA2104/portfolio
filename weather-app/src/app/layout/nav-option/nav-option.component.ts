@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-nav-option',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  templateUrl: './nav-option.component.html',
+  styleUrl: './nav-option.component.scss'
 })
-export class FooterComponent {
+export class NavOptionComponent {
 
 }

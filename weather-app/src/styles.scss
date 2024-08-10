@@ -39,14 +39,67 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-backdrop-filter: blur(5px);
 }
 
+.bg-danger {
+  background: rgba(255, 121, 88, 0.75) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.new-btn {
+  background: var(--main-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.new-btn:hover {
+  color: white;
+  border: 1px solid white;
+}
+
 .container {
   max-width: 1000px !important;
 }
 
-a:visited, a:link {
+a:visited, a:link, a {
   color: white;
+  cursor: pointer;
 }
 
 a:hover, a:focus {
   color: var(--main-color);
+}
+
+.glassmorphic-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+
+.list-unstyled {
+  padding: 0;
+}
+
+.list-unstyled li {
+  border-bottom: 1px solid #ddd;
+  padding: 16px;
+  transition: all .2s ease-in-out;
+}
+
+.list-unstyled li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+img {
+  max-width: 50px;
 }
