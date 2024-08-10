@@ -12,6 +12,7 @@
             <div class="d-flex align-items-center flex-grow-1">
               <div class="me-3">
                 <p class="m-0">{{ day.date | date : 'EEE' }}</p>
+                <p class="m-0">{{ day.date | date : 'MM/dd' }}</p>
                 <img [src]="day.day.condition.icon" alt="Weather icon" />
               </div>
               <div>
@@ -31,7 +32,6 @@
           </li>
         </ul>
       </ng-container>
-      
       
       <ng-template #loading>
         <p>Loading weather data...</p>

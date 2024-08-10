@@ -5,17 +5,17 @@
         src="favicon.svg"
         width="40"
         height="40"
-        class="d-inline-block align-top"
+        class="brand-logo d-inline-block align-top"
         alt="Brand Logo"
       />
-      SkyForecast
+      <span class="brand-text">SkyForecast</span>
     </a>
 
     <div
       *ngIf="weather$ | async as weatherData;"
       class="nav-item d-flex align-items-center"
     >
-      <p class="text-light mb-0 me-2">
+      <p class="text-light mb-0">
         {{ weatherData.location.name }} {{ weatherData.current.temp_c }}°C
       </p>
       <img
@@ -23,7 +23,7 @@
         width="40"
         height="40"
         alt="Weather Icon"
-        class="me-3 ms-auto"
+        class="ms-auto"
       />
     </div>
 
