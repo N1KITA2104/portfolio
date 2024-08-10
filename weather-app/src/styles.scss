@@ -1,11 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
+:root {
+  --main-color: rgb(255, 121, 88);
+  --main-background-color: rgb(41, 41, 44);
+  --main-text-color: rgb(255, 255, 255);
+}
+
 html,
 body {
   height: 100%;
   padding: 0;
   margin: 0;
-  color: white;
+  color: var(--main-text-color);
+  background-image: url("/assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 body {
   margin: 0;
@@ -26,10 +36,6 @@ input[type="search"]::-webkit-search-results-decoration {
 ::selection {
   background-color: rgba(160, 118, 125, 0.7);
   color: white;
-}
-
-:root {
-  --main-color: rgb(255, 121, 88);
 }
 
 .bg-dark {
@@ -65,12 +71,15 @@ input[type="search"]::-webkit-search-results-decoration {
   max-width: 1000px !important;
 }
 
-a:visited, a:link, a {
+a:visited,
+a:link,
+a {
   color: white;
   cursor: pointer;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: var(--main-color);
 }
 
@@ -85,7 +94,6 @@ a:hover, a:focus {
   color: white;
 }
 
-
 .list-unstyled {
   padding: 0;
 }
@@ -93,7 +101,7 @@ a:hover, a:focus {
 .list-unstyled li {
   border-bottom: 1px solid #ddd;
   padding: 16px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .list-unstyled li:hover {
@@ -102,4 +110,32 @@ a:hover, a:focus {
 
 img {
   max-width: 50px;
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(41, 36, 33, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffb380;
+}
+
+/* For Firefox */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-color) rgba(33, 37, 41, 0.8);
+}
+
+/* For IE and Edge (Legacy) */
+.scrollable {
+  -ms-overflow-style: scrollbar;
 }
