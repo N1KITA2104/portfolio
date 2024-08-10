@@ -1,56 +1,64 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active" >
-      <img
-        src="favicon.svg"
-        width="40"
-        height="40"
-        class="d-inline-block align-top"
-        alt="Brand Logo"
-      />
-      SkyForecast
-    </a>
+    <div class="d-flex flex-row">
+      <a
+        class="navbar-brand"
+        [routerLink]="['/']"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          src="favicon.svg"
+          width="40"
+          height="40"
+          class="d-inline-block align-top"
+          alt="Brand Logo"
+        />
+        SkyForecast
+      </a>
 
-    <div
-      *ngIf="weather$ | async as weatherData;"
-      class="nav-item d-flex align-items-center"
-    >
-      <p class="text-light mb-0 me-2">
-        {{ weatherData.location.name }} {{ weatherData.current.temp_c }}°C
-      </p>
-      <img
-        [src]="weatherData.current.condition.icon"
-        width="40"
-        height="40"
-        alt="Weather Icon"
-        class="me-3"
-      />
+      <div
+        *ngIf="weather$ | async as weatherData"
+        class="nav-item d-flex align-items-center"
+      >
+        <p class="text-light mb-0 me-2">
+          {{ weatherData.location.name }} {{ weatherData.current.temp_c }}°C
+        </p>
+        <img
+          [src]="weatherData.current.condition.icon"
+          width="40"
+          height="40"
+          alt="Weather Icon"
+          class="me-3"
+        />
+      </div>
     </div>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto d-flex">
-        <!--Here links-->
-      </ul>
-      <form class="d-flex align-items-center ms-auto">
-        <input
-          class="form-control me-0"
-          type="search"
-          placeholder="Search location"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    <div class="d-flex flex-row">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav d-flex">
+          <!--Here links-->
+        </ul>
+        <form class="d-flex align-items-center">
+          <input
+            class="form-control me-0"
+            type="search"
+            placeholder="Search location"
+            aria-label="Search"
+          />
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </div>
 </nav>

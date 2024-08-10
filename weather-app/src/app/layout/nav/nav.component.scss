@@ -1,10 +1,10 @@
-$green_color: var(--green-color);
+$main_color: var(--main-color);
 
 .navbar-brand {
   display: flex;
   align-items: center;
   margin-right: 20px;
-  color: $green_color;
+  color: $main_color;
 }
 
 .navbar-brand img {
@@ -14,20 +14,20 @@ $green_color: var(--green-color);
 .form-control {
   border-radius: 0;
   border-bottom-left-radius: 6px;
-  border-color: $green_color;
+  border-color: $main_color;
 }
 
 
-.btn {
+.btn, .btn:active {
   border-radius: 0;
   border-left: 0;
   border-bottom-right-radius: 6px;
-  color: $green_color;
-  border-color: $green_color;
+  color: $main_color;
+  border-color: $main_color;
 }
 
-.btn:hover {
-  background-color: $green_color;
+.btn:hover, .btn:focus {
+  background-color: $main_color;
   color: white;
 }
 
@@ -40,12 +40,12 @@ $green_color: var(--green-color);
   font-size: 18px;
   border-radius: 0;
   padding: 4px;
-  border-color: $green_color;
+  border-color: $main_color;
   border-top-right-radius: 6px;
 }
 
 .navbar-toggler:hover {
-  background-color: $green_color;
+  background-color: $main_color;
 }
 
 .navbar-toggler:focus {
