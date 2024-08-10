@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherInfoService } from '../../services/weather-info.service';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs/internal/Observable';
+import { WeatherInfoService } from '../../services/weather-info.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-current-weather',
   standalone: true,
-  imports: [CommonModule, RouterLink],
-  providers: [WeatherInfoService],
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  imports: [CommonModule],
+  templateUrl: './current-weather.component.html',
+  styleUrl: './current-weather.component.scss'
 })
-export class NavComponent implements OnInit {
+export class CurrentWeatherComponent implements OnInit {
+  currentTime = new Date();
   weather$: Observable<any> | undefined;
 
   constructor(private weatherService: WeatherInfoService) {}

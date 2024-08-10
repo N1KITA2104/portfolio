@@ -4,12 +4,12 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 
 export const routes: Routes = [
   {
-    path: 'home',
+    path: 'weather',
     component: HomeComponent,
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/weather',
     pathMatch: 'full',
   },
   {
