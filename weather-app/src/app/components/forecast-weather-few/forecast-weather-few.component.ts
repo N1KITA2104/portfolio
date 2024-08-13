@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseWeatherComponent } from '../base-weather/base-weather.component'; // Импортируйте базовый компонент
-import { WeatherForecastService } from '../../services/weather-forecast.service';
+import { LoadingComponent } from '../../layout/loading/loading.component';
+import { WeatherService } from '../../services/weather.service';
+import { WeatherComponent } from '../weather/weather.component';
 
 @Component({
   selector: 'app-forecast-weather-few',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingComponent],
   templateUrl: './forecast-weather-few.component.html',
-  styleUrls: ['./forecast-weather-few.component.scss']
+  styleUrls: ['./forecast-weather-few.component.scss'],
 })
-export class ForecastWeatherFewComponent extends BaseWeatherComponent {
-  constructor(weatherService: WeatherForecastService) {
+export class ForecastWeatherFewComponent extends WeatherComponent {
+  override forecast: boolean = true;
+
+  constructor(weatherService: WeatherService) {
     super(weatherService);
   }
 }

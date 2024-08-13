@@ -1,0 +1,18 @@
+{
+  "/weather-api": {
+    "target": "https://api.weatherapi.com/v1",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/weather-api": ""
+    }
+  },
+  "/ip-api": {
+    "target": "https://ipinfo.io",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/ip-api": ""
+    }
+  }
+}

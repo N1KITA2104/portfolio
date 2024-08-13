@@ -1,38 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { WeatherInfoService } from '../../services/weather-info.service';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../../layout/loading/loading.component';
+import { WeatherService } from '../../services/weather.service';
+import { WeatherComponent } from '../weather/weather.component';
 
 @Component({
   selector: 'app-current-weather',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingComponent],
   templateUrl: './current-weather.component.html',
-  styleUrl: './current-weather.component.scss'
+  styleUrl: './current-weather.component.scss',
 })
-export class CurrentWeatherComponent implements OnInit {
+export class CurrentWeatherComponent extends WeatherComponent {
   currentTime = new Date();
-  weather$: Observable<any> | undefined;
 
-  constructor(private weatherService: WeatherInfoService) {}
-
-  ngOnInit(): void {
-    this.loadWeather();
+  constructor(weatherService: WeatherService) {
+    super(weatherService);
   }
 
-  private loadWeather(): void {
-    if (typeof window !== 'undefined' && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          this.weather$ = this.weatherService.getWeatherByCoordinates(lat, lon);
-        },
-        (error) => {
-          console.error('Error getting location', error); 
-          this.weather$ = this.weatherService.getWeatherByCity('New York');
-        }
-      );
-    }
-  }
 }

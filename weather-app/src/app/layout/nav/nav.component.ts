@@ -1,39 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherInfoService } from '../../services/weather-info.service';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs/internal/Observable';
+import { WeatherComponent } from '../../components/weather/weather.component';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule, RouterLink],
-  providers: [WeatherInfoService],
+  imports: [CommonModule, RouterLink, FormsModule],
+  providers: [],
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
-export class NavComponent implements OnInit {
-  weather$: Observable<any> | undefined;
+export class NavComponent extends WeatherComponent {
+  currentTime = new Date();
+  searchTerm: string = '';
 
-  constructor(private weatherService: WeatherInfoService) {}
-
-  ngOnInit(): void {
-    this.loadWeather();
+  constructor(weatherService: WeatherService, private router: Router) {
+    super(weatherService);
   }
 
-  private loadWeather(): void {
-    if (typeof window !== 'undefined' && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          this.weather$ = this.weatherService.getWeatherByCoordinates(lat, lon);
-        },
-        (error) => {
-          console.error('Error getting location', error); 
-          this.weather$ = this.weatherService.getWeatherByCity('New York');
-        }
-      );
-    }
+  onSearch() {
+    const formattedCity = this.searchTerm
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-');
+
+    this.router.navigate([`/weather/${formattedCity}`]);
+    this.searchTerm = '';
   }
 }

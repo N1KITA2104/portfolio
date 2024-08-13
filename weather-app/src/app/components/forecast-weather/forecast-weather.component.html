@@ -1,19 +1,19 @@
 <div class="container mt-3 mb-3">
   <div class="glassmorphic-card card">
-    <div
-      class="card-header text-white p-3 d-flex justify-content-between"
-    >
-      <h5 class="card-title">Today's Weather</h5>
-      <p class="card-subtitle">{{ currentTime | date : "EEE, MMM dd" }}</p>
-    </div>
-    <div class="card-body text-white">
-      <ng-container *ngIf="weather$ | async as weatherData; else loading">
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <div class="card-header text-white p-3 d-flex justify-content-between">
+        <h5 class="card-title">Today's Weather</h5>
+        <p class="card-subtitle">{{ currentTime | date : "EEE, MMM dd" }}</p>
+      </div>
+      <div class="card-body text-white">
         <div class="weather-info">
           <!-- Daytime Weather -->
           <div class="d-flex flex-row align-items-center">
             <img
               [src]="weatherData.forecast.forecastday[0].day.condition.icon"
               alt="Day Condition Icon"
+              width="64px"
+              height="64px"
             />
             <p class="p-0 m-0">
               Today:
@@ -29,6 +29,8 @@
                 weatherData.forecast.forecastday[0].hour[21].condition.icon
               "
               alt="Night Condition Icon"
+              width="64px"
+              height="64px"
             />
             <p class="p-0 m-0">
               Tonight:
@@ -37,10 +39,11 @@
             </p>
           </div>
         </div>
-      </ng-container>
-      <ng-template #loading>
-        <p>Loading weather data...</p>
-      </ng-template>
-    </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading />
+    </ng-template>
   </div>
 </div>

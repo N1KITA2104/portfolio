@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-import { WeatherForecastService } from '../../services/weather-forecast.service';
-import { BaseWeatherComponent } from '../base-weather/base-weather.component';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../../layout/loading/loading.component';
+import { WeatherComponent } from '../weather/weather.component';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-daily',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingComponent],
   templateUrl: './daily.component.html',
   styleUrl: './daily.component.scss'
 })
-export class DailyComponent extends BaseWeatherComponent {
-  constructor(weatherService: WeatherForecastService) {
+export class DailyComponent extends WeatherComponent {
+  override forecast: boolean = true;
+
+  constructor(weatherService: WeatherService) {
     super(weatherService);
   }
 }

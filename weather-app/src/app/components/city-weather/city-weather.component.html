@@ -1,0 +1,230 @@
+<div class="container mt-3 mb-3">
+  <div class="card glassmorphic-card">
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <!-- Card Header -->
+      <div class="card-header p-3 d-flex justify-content-between">
+        <div>
+          <h5 class="card-title mb-2">
+            {{
+              weatherData.forecast
+                ? "10-Day Weather Forecast"
+                : weatherData.location.name +
+                  (weatherData.location.region
+                    ? ", " + weatherData.location.region
+                    : "")
+            }}
+          </h5>
+          <p class="card-subtitle">
+            {{
+              !weatherData.forecast
+                ? weatherData.location.country || "Current Weather"
+                : ""
+            }}
+          </p>
+        </div>
+        <div class="text-end">
+          <p class="m-0">
+            {{ weatherData.forecast ? "" : (currentTime | date : "hh:mm a") }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body p-3 text-light">
+        <!-- Current Weather -->
+        <ng-container *ngIf="!weatherData.forecast">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between mb-4"
+          >
+            <!-- Left Side: Weather Information -->
+            <div
+              class="d-flex flex-column align-items-start flex-shrink-1 mb-4 mb-md-0"
+              style="flex: 2"
+            >
+              <div class="d-flex align-items-center mb-3">
+                <img
+                  [src]="weatherData.current?.condition?.icon"
+                  width="64px"
+                  height="64px"
+                  alt="Current Condition Icon"
+                  class="me-3"
+                />
+                <div>
+                  <p class="card-text display-5 mb-2">
+                    {{ weatherData.current?.temp_c }}°C /
+                    {{ weatherData.current?.temp_f }}°F
+                  </p>
+                  <p class="card-text display-6 mb-2">
+                    <strong>{{ weatherData.current?.condition?.text }}</strong>
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      >Feels Like: {{ weatherData.current?.feelslike_c }}°C /
+                      {{ weatherData.current?.feelslike_f }}°F</strong
+                    >
+                  </p>
+                  <p class="card-text">
+                    <strong>UV Index: {{ weatherData.current?.uv }}</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Additional Weather Details -->
+            <div
+              class="d-flex flex-column flex-grow-1"
+              style="flex: 3"
+            >
+              <ul class="list-unstyled mb-0">
+                <li class="d-flex justify-content-between mb-2">
+                  <strong>Humidity</strong>
+                  <strong>{{ weatherData.current?.humidity }}%</strong>
+                </li>
+                <li class="d-flex justify-content-between mb-2">
+                  <strong>Wind</strong>
+                  <strong>{{ weatherData.current?.wind_kph }} km/h</strong>
+                </li>
+                <li class="d-flex justify-content-between mb-2">
+                  <strong>Pressure</strong>
+                  <strong>{{ weatherData.current?.pressure_mb }} mb</strong>
+                </li>
+                <li class="d-flex justify-content-between mb-2">
+                  <strong>Visibility</strong>
+                  <strong>{{ weatherData.current?.vis_km }} km</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- 10-Day Forecast -->
+        <ng-container *ngIf="weatherData.forecast">
+          <div class="card-body text-white m-0 p-0">
+            <ul class="list-unstyled m-0 pb-4">
+              <li
+                *ngFor="let day of weatherData.forecast.forecastday"
+                class="d-flex flex-column flex-sm-row align-items-start justify-content-between border-bottom border-secondary pb-3 p-3"
+              >
+                <div class="d-flex align-items-center flex-grow-1 mb-2 mb-sm-0">
+                  <div class="me-3">
+                    <p class="m-0 fw-bold">{{ day.date | date : "EEE" }}</p>
+                    <p class="m-0">{{ day.date | date : "MM/dd" }}</p>
+                    <img
+                      [src]="day.day.condition.icon"
+                      height="64px"
+                      width="64px"
+                      alt="Weather icon"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div>
+                    <p class="m-0 display-6 fw-bold">
+                      <strong
+                        >{{ day.day.maxtemp_c }}°C /
+                        {{ day.day.mintemp_c }}°C</strong
+                      >
+                      <br />
+                      <strong
+                        >{{ day.day.maxtemp_f }}°F /
+                        {{ day.day.mintemp_f }}°F</strong
+                      >
+                    </p>
+                    <p class="m-0 fs-5">{{ day.day.condition.text }}</p>
+                    <p class="m-0">UV Index: {{ day.day.uv }}</p>
+                    <p class="m-0">
+                      Precipitation: {{ day.day.totalprecip_mm }} mm /
+                      {{ day.day.totalprecip_in }} in
+                    </p>
+                    <p class="m-0">
+                      Visibility: {{ day.day.avgvis_km }} km /
+                      {{ day.day.avgvis_miles }} miles
+                    </p>
+                  </div>
+                </div>
+                <div class="text-end ms-3 mt-2 mt-sm-0">
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/rain.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Rain"
+                      />
+                      <strong class="ms-1"
+                        >{{ day.day.daily_chance_of_rain }}%</strong
+                      >
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/wind.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Wind"
+                      />
+                      <strong class="ms-1"
+                        >{{ day.day.maxwind_kph }} km/h /
+                        {{ day.day.maxwind_mph }} mph</strong
+                      >
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/humidity.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Humidity"
+                      />
+                      <strong class="ms-1">{{ day.day.avghumidity }}%</strong>
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/snow.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Snow"
+                      />
+                      <strong class="ms-1"
+                        >{{ day.day.totalsnow_cm }} cm</strong
+                      >
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/sunrise.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Sunrise"
+                      />
+                      <strong class="ms-1">{{ day.astro.sunrise }}</strong>
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small class="d-flex align-items-center">
+                      <img
+                        src="/assets/weather-icons/moon.svg"
+                        height="20px"
+                        width="auto"
+                        alt="Moonset"
+                      />
+                      <strong class="ms-1">{{ day.astro.moonset }}</strong>
+                    </small>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </div>
+</div>

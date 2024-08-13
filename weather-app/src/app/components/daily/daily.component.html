@@ -1,10 +1,16 @@
 <div class="container mt-3 mb-3">
   <div class="glassmorphic-card card">
-    <div class="card-header p-3 text-white rounded-top">
-      <h5 class="card-title mb-2">10-Day Weather Forecast</h5>
-    </div>
-    <div class="card-body text-white m-0 p-0">
-      <ng-container *ngIf="weather$ | async as weatherData; else loading">
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <div class="card-header p-3 text-white rounded-top">
+        <h5 class="card-title mb-2">10-Day Weather Forecast</h5>
+      </div>
+      <div class="card-body text-white m-0 p-0">
+        <div class="glassmorphic-card p-3 mb-3">
+          <h5 class="card-title mb-2">
+            {{ weatherData.location.name }}, {{ weatherData.location.region }}
+          </h5>
+          <p class="card-subtitle">{{ weatherData.location.country }}</p>
+        </div>
         <ul class="list-unstyled m-0 pb-4">
           <li
             *ngFor="let day of weatherData.forecast.forecastday"
@@ -16,6 +22,8 @@
                 <p class="m-0">{{ day.date | date : "MM/dd" }}</p>
                 <img
                   [src]="day.day.condition.icon"
+                  height="64px"
+                  width="64px"
                   alt="Weather icon"
                   class="img-fluid"
                 />
@@ -48,8 +56,9 @@
               <p class="m-0">
                 <small class="d-flex align-items-center">
                   <img
-                    src="/assets/weather-icons/rain.png"
-                    height="24px"
+                    src="/assets/weather-icons/rain.svg"
+                    height="20px"
+                    width="auto"
                     alt="Rain"
                   />
                   <strong class="ms-1"
@@ -61,7 +70,8 @@
                 <small class="d-flex align-items-center">
                   <img
                     src="/assets/weather-icons/wind.svg"
-                    height="24px"
+                    height="20px"
+                    width="auto"
                     alt="Wind"
                   />
                   <strong class="ms-1"
@@ -74,7 +84,8 @@
                 <small class="d-flex align-items-center">
                   <img
                     src="/assets/weather-icons/humidity.svg"
-                    height="24px"
+                    height="20px"
+                    width="auto"
                     alt="Humidity"
                   />
                   <strong class="ms-1">{{ day.day.avghumidity }}%</strong>
@@ -83,8 +94,9 @@
               <p class="m-0">
                 <small class="d-flex align-items-center">
                   <img
-                    src="/assets/weather-icons/snow.png"
-                    height="24px"
+                    src="/assets/weather-icons/snow.svg"
+                    height="20px"
+                    width="auto"
                     alt="Snow"
                   />
                   <strong class="ms-1">{{ day.day.totalsnow_cm }} cm</strong>
@@ -93,8 +105,9 @@
               <p class="m-0">
                 <small class="d-flex align-items-center">
                   <img
-                    src="/assets/weather-icons/sunrise.png"
-                    height="24px"
+                    src="/assets/weather-icons/sunrise.svg"
+                    height="20px"
+                    width="auto"
                     alt="Sunrise"
                   />
                   <strong class="ms-1">{{ day.astro.sunrise }}</strong>
@@ -103,8 +116,9 @@
               <p class="m-0">
                 <small class="d-flex align-items-center">
                   <img
-                    src="/assets/weather-icons/moon.png"
-                    height="24px"
+                    src="/assets/weather-icons/moon.svg"
+                    height="20px"
+                    width="auto"
                     alt="Moonset"
                   />
                   <strong class="ms-1">{{ day.astro.moonset }}</strong>
@@ -113,11 +127,11 @@
             </div>
           </li>
         </ul>
-      </ng-container>
+      </div>
+    </ng-container>
 
-      <ng-template #loading>
-        <p>Loading weather data...</p>
-      </ng-template>
-    </div>
+    <ng-template #loading>
+      <app-loading />
+    </ng-template>
   </div>
 </div>

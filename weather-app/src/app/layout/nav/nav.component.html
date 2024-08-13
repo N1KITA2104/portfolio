@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active" >
+    <!-- Brand -->
+    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active">
       <img
         src="favicon.svg"
         width="40"
@@ -11,22 +12,24 @@
       <span class="brand-text">SkyForecast</span>
     </a>
 
+    <!-- Weather Information -->
     <div
       *ngIf="weather$ | async as weatherData;"
-      class="nav-item d-flex align-items-center"
+      class="nav-item d-flex align-items-center d-none d-lg-flex"
     >
-      <p class="text-light mb-0">
+      <p class="text-light mb-0 me-2">
         {{ weatherData.location.name }} {{ weatherData.current.temp_c }}°C
       </p>
       <img
         [src]="weatherData.current.condition.icon"
-        width="40"
-        height="40"
+        width="40px"
+        height="40px"
         alt="Weather Icon"
         class="ms-auto"
       />
     </div>
 
+    <!-- Navbar Toggler -->
     <button
       class="navbar-toggler"
       type="button"
@@ -34,23 +37,30 @@
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
-      aria-label="Toggle navigation"
+      aria-label="Toggle navigation menu"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Collapsible Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav d-flex">
-        <!--Here links-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Here links -->
       </ul>
-      <form class="d-flex align-items-center ms-auto">
+      <form (ngSubmit)="onSearch()" class="d-flex align-items-center ms-auto mt-2 mt-lg-0" aria-label="Search form">
         <input
+          id="search-location"
+          name="search"          
           class="form-control me-0"
           type="search"
           placeholder="Search location"
-          aria-label="Search"
+          aria-label="Search location"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit" aria-label="Submit search">Search</button>
       </form>
+      
     </div>
   </div>
 </nav>

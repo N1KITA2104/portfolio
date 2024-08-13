@@ -1,41 +1,63 @@
 <div class="container mt-3 mb-3 rounded-bottom-0">
   <div class="glassmorphic-card card">
-    <div class="card-header p-3 d-flex justify-content-between">
-      <div>
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <div class="card-header p-3 d-flex justify-content-between">
         <h5 class="card-title mb-2">10-Day Weather Forecast</h5>
       </div>
-    </div>
-    <div class="card-body text-white m-0 p-0">
-      <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <div class="card-body text-white m-0 p-0">
         <ul class="list-unstyled m-0 pb-4">
-          <li *ngFor="let day of weatherData.forecast.forecastday" class="d-flex align-items-center justify-content-between">
+          <li
+            *ngFor="let day of weatherData.forecast.forecastday"
+            class="d-flex align-items-center justify-content-between"
+          >
             <div class="d-flex align-items-center flex-grow-1">
               <div class="me-3">
                 <p class="m-0">{{ day.date | date : 'EEE' }}</p>
                 <p class="m-0">{{ day.date | date : 'MM/dd' }}</p>
-                <img [src]="day.day.condition.icon" alt="Weather icon" />
+                <img [src]="day.day.condition.icon" alt="Weather icon" width="64px" height="64px" />
               </div>
               <div>
                 <p class="m-0">
-                  <strong>{{ day.day.maxtemp_c }}° / {{ day.day.mintemp_c }}°</strong>
+                  <strong>{{ day.day.maxtemp_c }}°C / {{ day.day.mintemp_c }}°C</strong>
+                </p>
+                <p>
+                  <strong>{{ day.day.condition.text }}</strong>
                 </p>
               </div>
             </div>
             <div class="text-end">
-              <p class="m-0">
+              <p>
                 <small class="d-flex align-items-center">
-                  <img src="assets/weather-icons/humidity.svg" height="20px" alt="Rain">
-                  <strong>{{ day.day.daily_chance_of_rain }}%</strong>
+                  <img
+                    src="assets/weather-icons/humidity.svg"
+                    height="20px"
+                    width="20px"
+                    alt="Rain"
+                  />
+                  <strong>{{ day.day.avghumidity }}%</strong>
+                </small>
+              </p>
+              <p>
+                <small class="d-flex align-items-center">
+                  <img
+                    src="/assets/weather-icons/rain.svg"
+                    height="20px"
+                    width="20px"
+                    alt="Rain"
+                  />
+                  <strong class="ms-1"
+                    >{{ day.day.daily_chance_of_rain }}%</strong
+                  >
                 </small>
               </p>
             </div>
           </li>
         </ul>
-      </ng-container>
-      
-      <ng-template #loading>
-        <p>Loading weather data...</p>
-      </ng-template>
-    </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading />
+    </ng-template>
   </div>
 </div>

@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/assets/fonts/quicksand.woff2') format('woff2'), 
+       url('/assets/fonts/quicksand.woff') format('woff');
+  font-display: swap;
+}
+
 
 :root {
   --main-color: rgb(255, 121, 88);
@@ -15,7 +21,24 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Quicksand, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  background-color: var(--main-background-color);
+  background-image: url('/assets/background.webp');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
+}
+
+main {
+  flex: 1;
 }
 
 * {
@@ -83,6 +106,7 @@ a:focus {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 100px;
 }
 
 .card-header {
@@ -102,10 +126,6 @@ a:focus {
 
 .list-unstyled li:hover {
   background-color: rgba(0, 0, 0, 0.1);
-}
-
-img {
-  max-width: 50px;
 }
 
 /* For WebKit browsers (Chrome, Safari) */
@@ -134,4 +154,48 @@ img {
 /* For IE and Edge (Legacy) */
 .scrollable {
   -ms-overflow-style: scrollbar;
+}
+
+.loading-container {
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 121, 88, 0.75),
+    rgba(255, 200, 163, 0.8)
+  );
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: var(--main-text-color);
+  animation: blink 1.5s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

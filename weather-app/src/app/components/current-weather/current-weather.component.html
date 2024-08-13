@@ -1,62 +1,67 @@
-<div *ngIf="weather$ | async as weatherData" class="container mt-3 mb-3">
+<div class="container mt-3 mb-3">
   <div class="card glassmorphic-card">
-    <div class="card-header p-3 d-flex justify-content-between">
-      <div>
-        <h5 class="card-title mb-2">
-          {{ weatherData.location.name }}, {{ weatherData.location.region }}
-        </h5>
-        <p class="card-subtitle">{{ weatherData.location.country }}</p>
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
+      <div class="card-header p-3 d-flex justify-content-between">
+        <div>
+          <h5 class="card-title mb-2">
+            {{ weatherData.location.name }}, {{ weatherData.location.region }}
+          </h5>
+          <p class="card-subtitle">{{ weatherData.location.country }}</p>
+        </div>
+        <div class="text-end">
+          <p class="m-0">Current Weather</p>
+          {{ currentTime | date: 'hh:mm a' }}
+        </div>
       </div>
-      <div class="text-end">
-        <p class="m-0">Current Weather</p>
-        {{ currentTime | date : "hh:mm a" }}
-      </div>
-    </div>
-    <div class="card-body p-5">
-      <div class="row text-light">
-        <div class="col-md-6">
-          <div class="d-flex flex-row align-items-center">
-            <img
-              [src]="weatherData.current.condition.icon"
-              width="50"
-              height="auto"
-              alt="Weather Icon"
-              class="my-3"
-            />
-            <p class="card-text display-5">
-              {{ weatherData.current.temp_c }}°C /
-              {{ weatherData.current.temp_f }}°F
+      <div class="card-body p-5">
+        <div class="row text-light">
+          <div class="col-md-6">
+            <div class="d-flex flex-row align-items-center">
+              <img
+                [src]="weatherData.current.condition.icon"
+                width="64px"
+                height="64px"
+                alt="Weather Icon"
+                class="my-3"
+              />
+              <p class="card-text display-5">
+                {{ weatherData.current.temp_c }}°C /
+                {{ weatherData.current.temp_f }}°F
+              </p>
+            </div>
+            <p class="card-text p-3 display-6">
+              <strong>{{ weatherData.current.condition.text }}</strong>
             </p>
           </div>
-          <p class="card-text p-3 display-6">
-            <strong>{{ weatherData.current.condition.text }}</strong>
-          </p>
-        </div>
-        <div class="col-md-6">
-          <p class="card-text d-flex justify-content-between">
-            <strong>Humidity</strong>
-            <strong>{{ weatherData.current.humidity }}%</strong>
-          </p>
-          <hr />
-          <p class="card-text d-flex justify-content-between">
-            <strong>Wind</strong>
-            <strong
-              >{{ weatherData.current.wind_dir }}
-              {{ weatherData.current.wind_kph }} km/h</strong
-            >
-          </p>
-          <hr />
-          <p class="card-text d-flex justify-content-between">
-            <strong>Pressure</strong>
-            <strong>{{ weatherData.current.pressure_mb }} mb</strong>
-          </p>
-          <hr />
-          <p class="card-text d-flex justify-content-between">
-            <strong>Visibility</strong>
-            <strong>{{ weatherData.current.vis_km }} km</strong>
-          </p>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="card-text d-flex justify-content-between">
+                <strong>Humidity</strong>
+                <strong>{{ weatherData.current.humidity }}%</strong>
+              </li>
+              <li class="card-text d-flex justify-content-between">
+                <strong>Wind</strong>
+                <strong
+                  >{{ weatherData.current.wind_dir }}
+                  {{ weatherData.current.wind_kph }} km/h</strong
+                >
+              </li>
+              <li class="card-text d-flex justify-content-between">
+                <strong>Pressure</strong>
+                <strong>{{ weatherData.current.pressure_mb }} mb</strong>
+              </li>
+              <li class="card-text d-flex justify-content-between">
+                <strong>Visibility</strong>
+                <strong>{{ weatherData.current.vis_km }} km</strong>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading />
+    </ng-template>
   </div>
 </div>

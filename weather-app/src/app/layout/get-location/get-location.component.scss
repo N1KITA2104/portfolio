@@ -1,0 +1,16 @@
+.get-loc {
+  background: white;
+  color: var(--main-color);
+  font-weight: bold;
+  border: 1px solid var(--main-color); 
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.get-loc:hover {
+  background: var(--main-color);
+  color: white; 
+  border: 1px solid white;
+}

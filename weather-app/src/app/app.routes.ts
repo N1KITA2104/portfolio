@@ -4,16 +4,16 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { DailyComponent } from './components/daily/daily.component';
 import { HourlyComponent } from './components/hourly/hourly.component';
+import { SearchComponent } from './components/search/search.component';
 
 export const routes: Routes = [
   {
-    path: 'weather',
+    path: '',
     component: HomeComponent,
   },
   {
-    path: '',
-    redirectTo: '/weather',
-    pathMatch: 'full',
+    path: 'weather/:city',
+    component: SearchComponent,
   },
   {
     path: 'daily',

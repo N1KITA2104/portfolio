@@ -1,49 +1,55 @@
 <div class="container mt-3 mb-3">
-    <div class="glassmorphic-card card">
+  <div class="glassmorphic-card card">
+    <ng-container *ngIf="weather$ | async as weatherData; else loading">
       <div class="card-header p-3 d-flex justify-content-between text-white rounded-top">
         <h5 class="card-title mb-2">Hourly Weather Forecast</h5>
       </div>
       <div class="card-body text-white m-0 p-0">
-        <ng-container *ngIf="weather$ | async as weatherData; else loading">
-          <ul class="list-unstyled m-0">
-            <li
-              *ngFor="let hour of weatherData.forecast.forecastday[0].hour"
-              class="d-flex flex-column flex-sm-row align-items-center border-bottom border-secondary p-2"
-            >
-              <div class="d-flex flex-column flex-sm-row align-items-center w-100">
-                <div class="text-center text-sm-start m-4 mb-2 mb-sm-0 flex-shrink-0">
-                  <p class="m-0 fw-bold">{{ hour.time | date : "HH:mm" }}</p>
-                  <img
-                    [src]="hour.condition.icon"
-                    alt="Weather icon"
-                    class="img-fluid"
-                    style="max-width: 50px;"
-                  />
-                </div>
-                <div class="text-start flex-grow-1">
-                  <p class="m-0 display-6 fw-bold">
-                    <strong>{{ hour.temp_c }}°C / {{ hour.temp_f }}°F</strong>
-                  </p>
-                  <div class="d-flex flex-column flex-sm-row justify-content-between m-3">
-                    <div class="d-flex flex-column mb-2 mb-sm-0">
-                      <p class="m-0">{{ hour.condition.text }}</p>
-                      <p class="m-0">Wind: {{ hour.wind_kph }} km/h / {{ hour.wind_mph }} mph</p>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <p class="m-0">Humidity: {{ hour.humidity }}%</p>
-                      <p class="m-0">Precipitation: {{ hour.precip_mm }} mm / {{ hour.precip_in }} in</p>
-                    </div>
+        <div class="glassmorphic-card p-3 mb-3">
+          <h5 class="card-title mb-2">
+            {{ weatherData.location.name }}, {{ weatherData.location.region }}
+          </h5>
+          <p class="card-subtitle">{{ weatherData.location.country }}</p>
+        </div>
+        <ul class="list-unstyled m-0">
+          <li *ngFor="let hour of weatherData.forecast.forecastday[0].hour; trackBy: trackByHour"
+              class="d-flex flex-column flex-sm-row align-items-center border-bottom border-secondary p-2">
+            <div class="d-flex flex-column flex-sm-row align-items-center w-100">
+              <div class="text-center text-sm-start m-4 mb-2 mb-sm-0 flex-shrink-0">
+                <p class="m-0 fw-bold">{{ hour.time | date: 'HH:mm' }}</p>
+                <img [src]="hour.condition.icon"
+                     alt="Weather icon"
+                     width="64px" 
+                     height="64px" 
+                     class="img-fluid" />
+              </div>
+              <div class="text-start flex-grow-1">
+                <p class="m-0 display-6 fw-bold">
+                  <strong>{{ hour.temp_c }}°C / {{ hour.temp_f }}°F</strong>
+                </p>
+                <div class="d-flex flex-column flex-sm-row justify-content-between m-3">
+                  <div class="d-flex flex-column mb-2 mb-sm-0">
+                    <p class="m-0">{{ hour.condition.text }}</p>
+                    <p class="m-0">
+                      Wind: {{ hour.wind_kph }} km/h / {{ hour.wind_mph }} mph
+                    </p>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <p class="m-0">Humidity: {{ hour.humidity }}%</p>
+                    <p class="m-0">
+                      Precipitation: {{ hour.precip_mm }} mm / {{ hour.precip_in }} in
+                    </p>
                   </div>
                 </div>
               </div>
-            </li>
-          </ul>
-        </ng-container>
-  
-        <ng-template #loading>
-          <p>Loading hourly weather data...</p>
-        </ng-template>
+            </div>
+          </li>
+        </ul>
       </div>
-    </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
   </div>
-  
+</div>
