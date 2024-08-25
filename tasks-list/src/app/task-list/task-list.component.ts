@@ -7,17 +7,21 @@ import { Task } from '../task.model';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [];
-  newTaskTitle: string = '';
-  newTaskDescription: string = '';
-  newTaskExpiryDate: string = ''; 
+  public tasks: Task[] = [];
+  public newTaskTitle: string = '';
+  public newTaskDescription: string = '';
+  public newTaskExpiryDate: string = ''; 
 
   ngOnInit() {
     this.loadTasksFromLocalStorage();
     this.checkExpiredTasks();
   }
 
-  addTask() {
+  public addTask() {
+    if(!this.newTaskTitle || !this.newTaskDescription) {
+      alert('Please enter something!');
+      return;
+    }
     if (this.newTaskTitle.trim()) {
       const newTask: Task = {
         id: this.tasks.length ? Math.max(...this.tasks.map(t => t.id)) + 1 : 1,
@@ -34,22 +38,22 @@ export class TaskListComponent implements OnInit {
     }
   }
 
-  countCompletedTasks() {
+  public countCompletedTasks() {
     return this.tasks.filter(task => task.completed).length;
   }
 
-  deleteTask(id: number): void {
+  public deleteTask(id: number): void {
     this.tasks = this.tasks.filter(task => task.id !== id);
     this.saveTasksToLocalStorage();
   }
 
-  saveTasksToLocalStorage(): void {
+  public saveTasksToLocalStorage(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
 
-  loadTasksFromLocalStorage(): void {
+  public loadTasksFromLocalStorage(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       const tasksFromStorage = localStorage.getItem('tasks');
       if (tasksFromStorage) {
@@ -62,7 +66,7 @@ export class TaskListComponent implements OnInit {
     }
   }
 
-  checkExpiredTasks(): void {
+  public checkExpiredTasks(): void {
     const now = new Date();
     this.tasks = this.tasks.filter(task => {
       if (task.expiryDate && new Date(task.expiryDate) < now) {
