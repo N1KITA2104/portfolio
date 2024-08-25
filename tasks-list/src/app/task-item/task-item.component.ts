@@ -10,6 +10,11 @@ export class TaskItemComponent {
   @Input() task!: Task;
   @Output() delete = new EventEmitter<number>();
 
+  isEditing = false;
+  editedTitle = '';
+  editedDescription = '';
+  editedExpiryDate = '';
+
   toggleComplete() {
     this.task.completed = !this.task.completed;
     this.updateLocalStorage();
@@ -17,6 +22,27 @@ export class TaskItemComponent {
 
   onDelete() {
     this.delete.emit(this.task.id);
+  }
+
+  editTask() {
+    this.isEditing = true;
+    this.editedTitle = this.task.title;
+    this.editedDescription = this.task.description;
+    this.editedExpiryDate = this.task.expiryDate ? new Date(this.task.expiryDate).toISOString().slice(0, 16) : '';
+  }
+
+  saveTask() {
+    if (this.editedTitle.trim()) {
+      this.task.title = this.editedTitle;
+      this.task.description = this.editedDescription;
+      this.task.expiryDate = this.editedExpiryDate ? new Date(this.editedExpiryDate) : undefined;
+      this.updateLocalStorage();
+      this.isEditing = false;
+    }
+  }
+
+  cancelEdit() {
+    this.isEditing = false;
   }
 
   updateLocalStorage(): void {
